@@ -1,0 +1,15 @@
+{extends @layout.latte}
+
+{#body}
+<h1>Ristretto</h1>
+<div class="content">
+<p>Hello, coffee lover!</p>
+<h2>User from static model</h2>
+<p>{$model->user->name} ({$model->user->email})</p>
+<h2>Articles from model</h2>
+	<div class="article" n:foreach="$model->articles as $article">
+		<h3><a href="article">{$article->caption}</a></h3>
+		{!$article->content|texy}
+	</div>
+</div>
+</div>
