@@ -3,7 +3,7 @@ RistrettoExample
 
 Example of prototyping with Ristretto
 
-You need PHP, NPM and Grunt.
+You need PHP, [Node.js with NPM](http://nodejs.org) and [Grunt](http://gruntjs.com).
 
 ```shell
 git clone https://github.com/ViliamKopecky/RistrettoExample.git
