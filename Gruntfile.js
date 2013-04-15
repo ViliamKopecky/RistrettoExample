@@ -14,11 +14,17 @@ module.exports = function (grunt) {
     watch: {
       styles: {
         files: ['www/**/*.less'],
-        tasks: ['less', 'ristretto:stylesheets']
+        tasks: ['less', 'ristretto:stylesheets'],
+        options: {
+          nospawn: true
+        }
       },
       scripts: {
-        files: ['www/**/*', '!www/**/*.css', '!www/**/*.less'],
-        tasks: ['ristretto:pages']
+        files: ['www/**/*.*', '!www/**/*.css', '!www/**/*.less'],
+        tasks: ['ristretto:pages'],
+        options: {
+          nospawn: true
+        }
       }
     },
     ristretto: {
