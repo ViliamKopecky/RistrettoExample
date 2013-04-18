@@ -16,9 +16,8 @@ When you see `Gruntfile.js` config - you will see, that Ristretto is configured 
 
 So in your browser open [http://localhost:2013/](http://localhost:2013/) and Ristretto should welcome you in the example.
 
-```shell
-// The first request will probably take some minute. Because on the background there is [Composer](http://getcomposer.org/) updating. When it's done, just refresh and enjoy!
-```
+
+*The first request will probably take a minute or two for updating PHP dependencies.*
 
 Running
 =======
