@@ -35,3 +35,5 @@ grunt publish
 ```
 
 **Note:** Default directory to publish is `publish/` but you can change it directly in `Gruntfile.js`, maybe to your public Dropbox folder. Just don't set it to existing directory, **Ristretto deletes all contents of the publish directory!**
+
+**Tip:** When publishing, the best practice is using relative links among pages and to assets. And instead of linking to pages `my_page.latte` link to `my_page.html`. In future these cases will be automaticaly converted, but it's not implemented yet.
