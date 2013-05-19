@@ -38,22 +38,6 @@ module.exports = function (grunt) {
         ]
       }
     },
-    watch: {
-      styles: {
-        files: [www_path('**/*.less')],
-        tasks: ['less', 'ristretto:stylesheets'],
-        options: {
-          nospawn: true
-        }
-      },
-      scripts: {
-        files: [www_path('**/*.*'), '!'+www_path('**/*.css'), '!'+www_path('/**/*.less')],
-        tasks: ['ristretto:pages'],
-        options: {
-          nospawn: true
-        }
-      }
-    },
     ristretto: {
       options: {
         model_dir: model_dir,
@@ -66,16 +50,35 @@ module.exports = function (grunt) {
       publish: {},
       stylesheets: {},
       pages: {}
+    },
+    esteWatch: {
+      options: {
+        livereload: {
+          enabled: false
+        },
+        dirs: [
+          www_dir,
+          www_path('**')
+        ]
+      },
+      less: function(filepath) {
+        return ['less'];
+      },
+      css: function(filepath) {
+        return ['ristretto:stylesheets'];
+      },
+      "*": function(filepath) {
+        return ['ristretto:pages'];
+      }
     }
   });
-
   
   grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-ristretto');
+  grunt.loadNpmTasks('grunt-este-watch');
+  grunt.loadNpmTasks('grunt-release');
 
-  grunt.registerTask('default', ['ristretto:server', 'less', 'ristretto:pages', 'watch']);
-  grunt.registerTask('publish', ['less', 'clean:publish', 'copy:publish', 'ristretto:publish']);
+  grunt.registerTask('default', ['ristretto:server', 'less', 'ristretto:pages', 'esteWatch']);
+  grunt.registerTask('publish', ['less', 'ristretto:publish', 'copy:publish']);
 };

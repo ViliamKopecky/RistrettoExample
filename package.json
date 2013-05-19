@@ -3,12 +3,16 @@
   "version": "0.1.1",
   "description": "Example of how to use Ristretto",
   "author": "ViliamKopecky",
+  "engines": {
+    "node": ">= 0.9.2"
+  },
   "dependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-less": "~0.5.0",
-    "grunt-contrib-watch": ">=0.3.1",
     "grunt-contrib-copy": ">=0.4.1",
     "grunt-contrib-clean": ">=0.4.1",
-    "grunt-ristretto": ">=0.2.1"
+    "grunt-ristretto": ">=0.3.0",
+    "grunt-este-watch": "0.0.2",
+    "grunt-release": "~0.3.3"
   }
 }
