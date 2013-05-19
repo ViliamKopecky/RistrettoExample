@@ -70,6 +70,11 @@ module.exports = function (grunt) {
       "*": function(filepath) {
         return ['ristretto:pages'];
       }
+    },
+    release: {
+      options: {
+        npm: false
+      }
     }
   });
   
