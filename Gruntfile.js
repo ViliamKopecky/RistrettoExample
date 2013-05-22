@@ -83,7 +83,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-ristretto');
   grunt.loadNpmTasks('grunt-este-watch');
   grunt.loadNpmTasks('grunt-release');
+  
+  grunt.option('force', true);
 
-  grunt.registerTask('default', ['ristretto:server', 'less', 'ristretto:pages', 'esteWatch']);
+  grunt.registerTask('default', ['ristretto:server', 'ristretto:pages', 'esteWatch']);
   grunt.registerTask('publish', ['less', 'ristretto:publish', 'copy:publish']);
 };
