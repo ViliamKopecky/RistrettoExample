@@ -1,6 +1,6 @@
 {
   "name": "ristretto-example",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Example of how to use Ristretto",
   "author": "ViliamKopecky",
   "engines": {
@@ -11,8 +11,7 @@
     "grunt-contrib-less": "~0.5.0",
     "grunt-contrib-copy": ">=0.4.1",
     "grunt-contrib-clean": ">=0.4.1",
-    "grunt-ristretto": "~0.3.3",
-    "grunt-este-watch": "0.0.2",
-    "grunt-release": "~0.3.3"
+    "grunt-ristretto": "~0.4.1",
+    "grunt-este-watch": "~0.0.3"
   }
 }

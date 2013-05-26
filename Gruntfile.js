@@ -1,10 +1,14 @@
 module.exports = function (grunt) {
 
+
+  // Ristretto config
   var publish_dir = 'publish';
   var www_dir = 'www';
   var latte_dir = www_dir;
   var model_dir = www_dir + '/model';
   var port = 2013;
+  // /Ristretto config
+
 
   var www_path = function(path) {
     return www_dir + '/' + path;
@@ -20,42 +24,19 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    less: {
-      production: {
-        options: {
-          yuicompress: true
-        },
-        files: less_files
-      }
-    },
     clean: {
-      publish: [publish_dir]
+      publish: [ publish_dir ]
     },
     copy: {
       publish: {
         files: [
-          {expand: true, cwd: www_dir, src: ['**', '!**.latte'], dest: publish_dir}
+          { expand: true, cwd: www_dir, src: ['**', '!**.latte'], dest: publish_dir }
         ]
       }
     },
-    ristretto: {
-      options: {
-        model_dir: model_dir,
-        latte_dir: latte_dir,
-        www_dir: www_dir,
-        publish_dir: publish_dir,
-        port: port
-      },
-      server: {},
-      publish: {},
-      stylesheets: {},
-      pages: {}
-    },
     esteWatch: {
       options: {
-        livereload: {
-          enabled: false
-        },
+        livereload: { enabled: false  },
         dirs: [
           www_dir,
           www_path('**')
@@ -65,15 +46,25 @@ module.exports = function (grunt) {
         return ['less'];
       },
       css: function(filepath) {
-        return ['ristretto:stylesheets'];
+        return ['ristretto:reloadStyles'];
       },
       "*": function(filepath) {
-        return ['ristretto:pages'];
+        return ['ristretto:reload'];
       }
     },
-    release: {
+    ristretto: {
       options: {
-        npm: false
+        model_dir: model_dir,
+        latte_dir: latte_dir,
+        www_dir: www_dir,
+        publish_dir: publish_dir,
+        port: port
+      }
+    },
+    less: {
+      production: {
+        options: { yuicompress: true  },
+        files: less_files
       }
     }
   });
@@ -82,10 +73,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-ristretto');
   grunt.loadNpmTasks('grunt-este-watch');
-  grunt.loadNpmTasks('grunt-release');
-  
-  grunt.option('force', true);
 
-  grunt.registerTask('default', ['ristretto:server', 'ristretto:pages', 'esteWatch']);
+  grunt.registerTask('default', ['ristretto', 'ristretto:reload', 'esteWatch']);
   grunt.registerTask('publish', ['less', 'ristretto:publish', 'copy:publish']);
 };
