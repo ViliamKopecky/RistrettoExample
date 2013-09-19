@@ -1,26 +1,15 @@
 module.exports = function (grunt) {
 
+  var port = 2013;
 
-  // Ristretto config
   var publish_dir = 'publish';
   var www_dir = 'www';
-  var latte_dir = www_dir;
-  var model_dir = www_dir + '/model';
-  var port = 2013;
-  // /Ristretto config
-
-
-  var www_path = function(path) {
-    return www_dir + '/' + path;
-  };
-
-  var latte_path = function(path) {
-    return latte_dir + '/' + path;
-  };
+  var latte_dir = 'www';
+  var model_dir = 'www/model';
 
   var less_files = {};
-  less_files[www_path('css/screen.css')] = www_path('less/screen.less');
-  //less_files[www_path('css/print.css')] = www_path('less/print.less');
+  less_files['www/css/screen.css'] = 'www/less/screen.less';
+  //less_files['www/css/print.css'] = 'www/less/print.less';
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -34,24 +23,6 @@ module.exports = function (grunt) {
         ]
       }
     },
-    esteWatch: {
-      options: {
-        livereload: { enabled: false  },
-        dirs: [
-          www_dir,
-          www_path('**')
-        ]
-      },
-      less: function(filepath) {
-        return ['less'];
-      },
-      css: function(filepath) {
-        return ['ristretto:reloadStyles'];
-      },
-      "*": function(filepath) {
-        return ['ristretto:reload'];
-      }
-    },
     ristretto: {
       options: {
         model_dir: model_dir,
@@ -61,9 +32,24 @@ module.exports = function (grunt) {
         port: port
       }
     },
+    esteWatch: {
+      options: {
+        livereload: { enabled: false },
+        dirs: [ www_dir+'/**' ]
+      },
+      less: function(filepath) {
+        return ['less'];
+      },
+      css: function(filepath) {
+        return ['ristretto:stylesheets'];
+      },
+      "*": function(filepath) {
+        return ['ristretto:pages'];
+      }
+    },
     less: {
       production: {
-        options: { yuicompress: true  },
+        options: { yuicompress: true },
         files: less_files
       }
     }
@@ -74,6 +60,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-ristretto');
   grunt.loadNpmTasks('grunt-este-watch');
 
-  grunt.registerTask('default', ['ristretto', 'ristretto:reload', 'esteWatch']);
+  grunt.registerTask('default', ['ristretto:server', 'less', 'ristretto:pages', 'esteWatch']);
   grunt.registerTask('publish', ['less', 'ristretto:publish', 'copy:publish']);
 };
