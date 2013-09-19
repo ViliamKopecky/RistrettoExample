@@ -1,6 +1,6 @@
 {
   "name": "ristretto-example",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "repository": { "type": "git", "url": "http://github.com/ViliamKopecky/RistrettoExample.git" },
   "description": "Example of how to use Ristretto",
   "author": "ViliamKopecky",
