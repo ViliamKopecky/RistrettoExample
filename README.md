@@ -9,7 +9,7 @@ You need PHP, [Node.js with NPM](http://nodejs.org) and [Grunt](http://gruntjs.c
 git clone https://github.com/ViliamKopecky/RistrettoExample.git
 cd RistrettoExample
 npm install
-grunt
+grunt dev
 ```
 
 When you see `Gruntfile.js` config - you will see, that Ristretto is configured to serve on port 8000.
