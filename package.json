@@ -1,7 +1,10 @@
 {
   "name": "ristretto-example",
   "version": "0.5.0",
-  "repository": { "type": "git", "url": "http://github.com/ViliamKopecky/RistrettoExample.git" },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/ViliamKopecky/RistrettoExample.git"
+  },
   "description": "Example of how to use Ristretto",
   "author": "ViliamKopecky",
   "engines": {
@@ -9,10 +12,8 @@
   },
   "dependencies": {
     "grunt": "~0.4.1",
-    "grunt-contrib-less": "~0.7.0",
-    "grunt-contrib-copy": ">=0.4.1",
-    "grunt-contrib-clean": ">=0.5.0",
-    "grunt-ristretto": "~0.5.0",
-    "grunt-este-watch": "~0.1.6"
+    "grunt-ristretto": "~1.0.0",
+    "grunt-este-watch": "~0.1.10",
+    "grunt-release": "~0.6.0"
   }
 }
