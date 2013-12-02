@@ -6,6 +6,13 @@ Ristretto prototyping system skeleton. Latte + Livereload + Static mockup model.
 You need PHP, [Node.js with NPM](http://nodejs.org) and [Grunt](http://gruntjs.com).
 
 ```shell
+# check your binaries versions
+php -v
+node -v
+npm -v
+grunt --version
+
+# clone and startup an example
 git clone https://github.com/ViliamKopecky/RistrettoExample.git
 cd RistrettoExample
 npm install
