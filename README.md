@@ -11,7 +11,9 @@ php -v
 node -v
 npm -v
 grunt --version
+```
 
+```shell
 # clone and startup an example
 git clone https://github.com/ViliamKopecky/RistrettoExample.git
 cd RistrettoExample
