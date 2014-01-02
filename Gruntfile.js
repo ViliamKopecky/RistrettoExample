@@ -32,10 +32,7 @@ module.exports = function (grunt) {
 
   });
 
-  grunt.loadNpmTasks('grunt-este-watch');
-  grunt.loadNpmTasks('grunt-ristretto');
-
-  grunt.loadNpmTasks('grunt-release');
+  require('matchdep').filter('grunt-*').forEach(grunt.loadNpmTasks);
 
   grunt.registerTask('dev', ['ristretto:startup', 'esteWatch']);
   grunt.registerTask('build', ['ristretto:publish']);
