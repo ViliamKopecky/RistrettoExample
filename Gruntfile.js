@@ -32,7 +32,8 @@ module.exports = function (grunt) {
 
   });
 
-  require('matchdep').filter('grunt-*').forEach(grunt.loadNpmTasks);
+  // Load the plugins
+  require('load-grunt-tasks')(grunt);
 
   grunt.registerTask('dev', ['ristretto:startup', 'esteWatch']);
   grunt.registerTask('build', ['ristretto:publish']);
