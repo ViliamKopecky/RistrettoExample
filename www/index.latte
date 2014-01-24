@@ -1,6 +1,6 @@
 {extends @layout.latte}
 
-{#body}
+{block #body}
 <h1>Ristretto</h1>
 <div class="content">
 <p>Hello, coffee lover!</p>
@@ -9,6 +9,6 @@
 <h2>Articles from model</h2>
 	<div class="article" n:foreach="$model->articles as $article">
 		<h3><a href="article.html">{$article->caption}</a></h3>
-		{!$article->content|texy}
+		{$article->content|texy|noescape}
 	</div>
 </div>
